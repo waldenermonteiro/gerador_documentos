@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import DocumentosCadastro from '../components/documentos/DocumentosCadastro'
-import TabelaVuex from '../components/TabelaVuex'
+import Documentos from '../components/documentos/Documentos'
 
 Vue.use(Router)
 
@@ -15,9 +15,9 @@ export default new Router({
     },
     {
       mode: 'history',
-      path: '/tabela-vuex',
-      name: 'TabelaVuex',
-      component: TabelaVuex
+      path: '/documentos',
+      name: 'Documentos',
+      component: Documentos
     }
   ]
 })

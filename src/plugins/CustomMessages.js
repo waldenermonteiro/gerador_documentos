@@ -1,7 +1,8 @@
+import store from '../store/store'
 const ShowMessages = {
     install(Vue, options) {
 
-        Vue.prototype.showMessage = (title, type, message) => {
+        Vue.prototype.$showMessage = (title, type, message) => {
             if (message != "") {
                 swal({
                     title: title,
@@ -19,7 +20,7 @@ const ShowMessages = {
 
         }
 
-        Vue.prototype.showMessageRulesEmpty = (title) => {
+        Vue.prototype.$showMessageRulesEmpty = (title) => {
             swal({
                 title: title,
                 icon: 'error',
@@ -33,7 +34,34 @@ const ShowMessages = {
 
             )
 
-        }
+        },
+            Vue.prototype.$showConfirmationMessage = (title, element, object, url) => {
+                swal({
+                    title: title,
+                    text: "TEM CERTEZA QUE DESEJA EXCLUIR " + element + " ?",
+                    icon: "warning",
+                    buttons: {
+                        danger: {
+                            label: "Não",
+                            text: "Não",
+                            value: false,
+                            className: "btn-danger"
+                        },
+                        success: {
+                            label: "Sim",
+                            text: "Sim",
+                            value: true,
+                            className: "btn-default",
+                        },
+
+                    }
+                }).then(result => {
+                    if (result) {
+                        store.dispatch(url, object);
+                    }
+                });
+
+            }
     }
 }
 export default ShowMessages

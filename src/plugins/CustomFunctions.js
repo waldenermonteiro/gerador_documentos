@@ -1,24 +1,52 @@
 const Validations = {
   install(Vue, options) {
 
-      Vue.prototype.showMessage = (title, type, message) => {
-        if (message != "") {
-          swal({
-            title: title,
-            icon: type,
-            text: message
+    Vue.prototype.$printContent = (modeloDocumento) => {
+      var tela_impressao = "";
+      var conteudo = modeloDocumento
+      tela_impressao = window.open("");
+      tela_impressao.document.write("<html><head>");
+      tela_impressao.document.write(
+        "<link rel='stylesheet' type='text/css' href='/static/css/quill.bubble.css'>"
+      );
+      tela_impressao.document.write(
+        "<link rel='stylesheet' type='text/css' href='/static/css/quill.core.css'>"
+      );
+      tela_impressao.document.write(
+        "<link rel='stylesheet' type='text/css' href='/static/css/quill.snow.css'>"
+      );
 
-          }).then((result) => {
-            // store.dispatch("cleanMessages");
-          }).catch((erro) => {
-            // store.dispatch("cleanMessages");
-          }
+      tela_impressao.document.write("</style >");
+      tela_impressao.document.write("</head><body >");
+      tela_impressao.document.write("<div class='ql-editor'>");
+      tela_impressao.document.write(conteudo);
+      tela_impressao.document.write("</div>");
+      tela_impressao.document.write("</body></html>");
+      setTimeout(() => {
+        tela_impressao.document.close();
+        tela_impressao.focus();
+        tela_impressao.print();
+        tela_impressao.close();
+      }, 1000);
 
-          )
+    },
+      Vue.prototype.$toggleClass = (element, className) => {
+        if (!element || !className) {
+          return;
         }
 
+        var classString = element.className,
+          nameIndex = classString.indexOf(className);
+        if (nameIndex == -1) {
+          classString += " " + className;
+        } else {
+          classString =
+            classString.substr(0, nameIndex) +
+            classString.substr(nameIndex + className.length);
+        }
+        element.className = classString;
       },
-      Vue.prototype.numeroLinhasPagina = (pagina, linhas, totalRows) => {
+      Vue.prototype.$numeroLinhasPagina = (pagina, linhas, totalRows) => {
         let linhasPaginaAtual = linhas * pagina - (linhas - 1);
         let linhasTotaisAteAPaginaAtual = linhasPaginaAtual + linhas - 1;
         if (pagina == 1) {
@@ -37,6 +65,28 @@ const Validations = {
             return linhasPaginaAtual + "-" + totalRows;
           }
         }
+      },
+      Vue.prototype.$replaceDocumento = (arrayOld, documento, modeloDocumento) => {
+        let newArray = [];
+        for (let i in documento) {
+          if (documento.hasOwnProperty(i)) {
+            newArray.push(documento[i]);
+          }
+        }
+        let temp = document.createElement('div');
+        temp.innerHTML = modeloDocumento;
+        let contentHTML = temp;
+        let elements = contentHTML.getElementsByTagName("*");
+        for (let i = 0; i < elements.length; i++) {
+          for (let j = 0; j < arrayOld.length; j++) {
+            let txt = elements[i].innerHTML.replace(
+              new RegExp(`${arrayOld[j]}`, "gi"),
+              `${newArray[j]}`
+            );
+            elements[i].innerHTML = txt;
+          }
+        }
+        return contentHTML.innerHTML;
       }
   }
 }

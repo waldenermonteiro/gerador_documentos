@@ -1,30 +1,5 @@
 export default {
-  tarifas: [
-    {
-      "tinGrupo": 1,
-      "bitProducao": true,
-      "chrDescricao": "AGENCIAS DA CAPITAL",
-      "QtdAgencias": 15,
-    },
-    {
-      "tinGrupo": 2,
-      "bitProducao": true,
-      "chrDescricao": "AGENCIAS DO INTERIOR",
-      "QtdAgencias": 16,
-    },
-    {
-      "tinGrupo": 3,
-      "bitProducao": true,
-      "chrDescricao": "AGENCIAS DA CAPITAL2",
-      "QtdAgencias": 17,
-    },
-    {
-      "tinGrupo": 4,
-      "bitProducao": true,
-      "chrDescricao": "AGENCIAS DA CAPITAL3",
-      "QtdAgencias": 18,
-    }
-  ],
+
   //Tabela
   filter: null,
   totalRows: 0,
@@ -34,22 +9,22 @@ export default {
   emptyFilteredText: "Não há registros que correspondam ao seu pedido",
   sortBy: "Nenhum",
   perPage: 1,
+  itens: new Array(),
   fields: [
 
     {
-      key: "tinGrupo",
+      key: "id",
       label: "Código",
       sortable: true
     },
     {
-      key: "chrDescricao",
+      key: "titulo",
       label: "Descrição",
       sortable: true
     },
     {
-      key: "QtdAgencias",
-      label: "Quantidade de Agências",
-      sortable: true
+      key: "acoes",
+      label: "Ações"
     }
   ],
 }

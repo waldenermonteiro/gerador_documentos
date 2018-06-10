@@ -1,15 +1,12 @@
 <template>
     <b-col :cols="cols" :sm="sm" :md="md" :lg="lg" :xl="xl" class=" panel-col">
         <div class="icons">
-                <a @click="disparaAcao()" v-show="fecharPanel">
-                    <icon class="panel-icon" name="close" flip="horizontal" scale="1.0"></icon>
-                </a>
-                <a v-b-toggle="idpainel" v-show="fecharPanel">
-                    <icon class="panel-icon" name="chevron-down" flip="horizontal" scale="1.0"></icon>
-                </a>
             <div class="panel-content">
-                <h5>
+                <h5 v-if="icone">
                     <icon class="panel-icon-titulo" :color="corIcone" :name="icone" scale="1.4"></icon> {{titulo}}
+                </h5>
+                <h5 v-else>
+                    <img src="./parchment-512.png" width="27" class="panel-icon-titulo" /> {{titulo}}
                 </h5>
                 <div class="panel-border"></div>
                 <b-collapse visible :id="idpainel">
@@ -21,59 +18,51 @@
 </template>
 <script>
 export default {
-    props: {
-        idpainel: {
-            type: String,
-            required: false
-        },
-        titulo: {
-            type: String,
-            required: false
-        },
-        cols: {
-            type: String,
-            required: false
-        },
-        sm: {
-            type: String,
-            required: false
-        },
-        md: {
-            type: String,
-            required: false
-        },
-        lg: {
-            type: String,
-            required: false
-        },
-        xl: {
-            type: String,
-            required: false
-        },
-        icone: {
-            type: String,
-            required: false
-        },
-        corIcone: {
-            type: String,
-            required: false,
-            default :"#445d77"
-        },
-        fecharPanel:{
-            type: Boolean,
-            required: false,
-            default : false
-        }
-
+  props: {
+    idpainel: {
+      type: String,
+      required: false
     },
-    methods: {
-        disparaAcao() {
-            this.$emit('fecharPainel');
-        }
-
+    titulo: {
+      type: String,
+      required: false
+    },
+    cols: {
+      type: String,
+      required: false
+    },
+    sm: {
+      type: String,
+      required: false
+    },
+    md: {
+      type: String,
+      required: false
+    },
+    lg: {
+      type: String,
+      required: false
+    },
+    xl: {
+      type: String,
+      required: false
+    },
+    icone: {
+      type: String,
+      required: false
+    },
+    corIcone: {
+      type: String,
+      required: false,
+      default: "black"
     }
-
-}
+  },
+  methods: {
+    disparaAcao() {
+      this.$emit("fecharPainel");
+    }
+  }
+};
 </script>
 <style scoped>
 .panel-col {

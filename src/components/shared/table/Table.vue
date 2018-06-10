@@ -42,7 +42,7 @@
 
         </b-row>
         <slot></slot>
-        <p style="color:black">({{numeroLinhasPagina(currentPage,perPage,totalRows)}}/{{totalRows}})</p>
+        <p style="color:black">({{$numeroLinhasPagina(currentPage,perPage,totalRows)}}/{{totalRows}})</p>
     </div>
 </template>
 

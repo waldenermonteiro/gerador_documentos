@@ -9,7 +9,7 @@
       <b-collapse is-nav id="nav_collapse">
 
         <b-navbar-nav>
-          <b-nav-item @click="irParaRota('tabela-vuex')">Seus Documentos</b-nav-item>
+          <b-nav-item @click="irParaRota('documentos')">Seus Documentos</b-nav-item>
           <b-nav-item @click="irParaRota('documento-formulario')">Cadastrar Documento</b-nav-item>
         </b-navbar-nav>
 

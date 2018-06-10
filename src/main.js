@@ -17,6 +17,10 @@ import store from './store/store'
 import Validations from './plugins/CustomFunctions.js'
 import ShowMessages from './plugins/CustomMessages.js'
 import VueDatePicker from 'vue-bootstrap-datetimepicker'
+import VueQuillEditor from 'vue-quill-editor';
+import 'quill/dist/quill.core.css';
+// import 'quill/dist/quill.snow.css';
+// import 'quill/dist/quill.bubble.css';
 Vue.component('vue-date-picker', VueDatePicker)
 const moment = require('moment')
 
@@ -35,7 +39,7 @@ Vue.component('icon', Icon);
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
-export default new Vue({
+export const barramento = new Vue({
   el: '#app',
   store,
   router,
