@@ -1,13 +1,13 @@
 <template>
   <div class="scroll-paper">
-    <div id="content" class="content ql-editor" v-html="modeloDocumentoCopia" style=""></div>
+    <div id="content" class="content ql-editor" v-html="documento.modelo" style=""></div>
   </div>
 </template>
 <script>
 import { mapState, mapActions } from "vuex";
 export default {
   computed: {
-    ...mapState("Documentos", ["modeloDocumentoCopia"])
+    ...mapState("Documentos", ["documento"])
   },
   data() {
     return {};
@@ -22,7 +22,7 @@ export default {
   width: 100%;
 }
 #content {
-  padding-top: 20%;
+  padding-top: 13%;
   padding-left: 10%;
   padding-right: 10%;
 }

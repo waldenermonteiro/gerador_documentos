@@ -13,12 +13,7 @@ export default {
   fields: [
 
     {
-      key: "id",
-      label: "Código",
-      sortable: true
-    },
-    {
-      key: "titulo",
+      key: "descricao",
       label: "Descrição",
       sortable: true
     },

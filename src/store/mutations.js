@@ -4,11 +4,10 @@ export default {
         state.erroGetAll = erroGettAll;
     },
     'SAVE_DOCUMENT'(state) {
-        state.Documentos.modelo.modelo = state.Documentos.modeloDocumentoCopia;
-        state.Documentos.modelos.push(
-            state.Documentos.modelo
+        state.Documentos.documentos.push(
+            state.Documentos.documento
         );
-        state.itens = state.Documentos.modelos;
+        state.itens = state.Documentos.documentos;
     },
     'DELETE_DOCUMENT'(state, { documento }) {
         let indice = state.itens.indexOf(documento);

@@ -50,6 +50,15 @@ module.exports = {
     },
     extensions: ['*', '.js', '.vue', '.json']
   },
+  plugins: [
+    new webpack.ProvidePlugin({
+      Vue: ['vue/dist/vue.esm.js', 'default'],
+      jQuery: 'jquery',
+      'window.jQuery': 'jquery',
+      $: 'jquery',
+      moment: 'moment',
+    }),
+  ],  
   devServer: {
     historyApiFallback: true,
     noInfo: true,

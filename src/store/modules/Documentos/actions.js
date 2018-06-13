@@ -17,12 +17,17 @@ const actions = {
         commit('CLONE_DOCUMENTO_MODELO', {})
 
     },
-    alterDocumentoModeloCopia({ commit }, obj) {
-        commit('ALTER_DOCUMENTO_COPIA', { modeloCopia: obj })
+    alterModeloVisualizacao({ commit }, obj) {
+        commit('ALTER_MODELO_VISUALIZACAO', { modelo: obj })
+
+    },
+    alterDocumentoModelo({ commit }, obj) {
+        commit('ALTER_DOCUMENTO_MODELO', { modelo: obj })
 
     },
     saveDocument({ commit }) {
         commit('SAVE_DOCUMENT', {}, { root: true })
+        commit('CLEAR_DOCUMENT', {})
 
     },
     deleteDocument({ commit }, obj) {

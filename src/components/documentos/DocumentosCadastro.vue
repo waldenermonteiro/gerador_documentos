@@ -28,11 +28,7 @@ import { barramento } from "../../main";
 import { mapState } from "vuex";
 export default {
   computed: {
-    ...mapState("Documentos", [
-      "modeloDocumentoCopia",
-      "variables",
-      "documento"
-    ])
+    ...mapState("Documentos", ["variables", "documento"])
   },
   components: {
     "documentos-formulario": DocumentoFormulario,
@@ -91,11 +87,11 @@ export default {
     validateSecondStep() {
       this.$store.dispatch("Documentos/cloneDocumentoModelo");
       this.$store.dispatch(
-        "Documentos/alterDocumentoModeloCopia",
+        "Documentos/alterDocumentoModelo",
         this.$replaceDocumento(
           this.variables,
           this.documento,
-          this.modeloDocumentoCopia
+          this.documento.modelo
         )
       );
       return this.$store

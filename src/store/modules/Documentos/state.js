@@ -1,13 +1,14 @@
 export default {
     validatorCadastro: true,
-    modeloDocumentoCopia: "",
     modeloDocumento: "",
     modeloImagem: "",
-    modelo: "",
-    modelos: [],
+    modeloVisualizacao: "",
+    documentos: [],
     documento: {
+        descricao: "teste",
         nome: "",
         email: "",
+        modelo: ""
     },
     variables: ["{!nome}", "{!email}"],
 }

@@ -11,14 +11,15 @@
               <b-button size="sm" variant="default" title="Imprimir Documento" class="float-right" @click="print(linha.item.modelo)">
                 <icon name="print" flip="horizontal" scale="1.0"></icon>
               </b-button>
-              <b-button size="sm" variant="success" title="Visualizar Documento" class="float-right" v-b-modal.modalDocumentoVisualizacao>
+              <b-button size="sm" variant="success" title="Visualizar Documento" class="float-right" v-b-modal.modalDocumentoVisualizacao @click="alterModeloVisualizacao(linha.item.modelo)">
                 <icon name="eye" flip="horizontal" scale="1.0"></icon>
               </b-button>
-              <documentos-visualizacao :modelo="linha.item.modelo"></documentos-visualizacao>
+
             </template>
           </b-table>
         </div>
       </table-custom>
+      <documentos-visualizacao :modelo="modeloVisualizacao"></documentos-visualizacao>
     </panel>
   </container-panel>
 </template>
@@ -34,6 +35,12 @@ export default {
   },
   data() {
     return {
+      date: new Date(),
+      options: {
+        format: "DD/MM/YYYY",
+        useCurrent: false,
+        locale: 'pt'
+      },
       sortDesc: null,
       emptyText: "Não foi possivel consultar os registros",
       emptyFilteredText: "Não há registros que correspondam ao seu pedido"
@@ -53,7 +60,7 @@ export default {
       "fields",
       "itens"
     ]),
-    ...mapState("Documentos", ["modelos"]),
+    ...mapState("Documentos", ["modeloVisualizacao"]),
     sortOptions() {
       return this.fields.filter(f => f.sortable).map(f => {
         return { text: f.label, value: f.key };
@@ -71,10 +78,13 @@ export default {
     print(item) {
       this.$printContent(item);
     },
+    alterModeloVisualizacao(modelo) {
+      this.$store.dispatch("Documentos/alterModeloVisualizacao", modelo);
+    },
     deleteDocument(documento) {
       this.$showConfirmationMessage(
         "Documentos",
-        documento.titulo,
+        documento.descricao,
         document,
         "Documentos/deleteDocument"
       );

@@ -36,6 +36,26 @@ Vue.use(VueFormWizard)
 Vue.component("panel", Panel);
 Vue.component("container-panel", ContainerPanel);
 Vue.component('icon', Icon);
+console.log(jQuery)
+
+import datePicker from 'vue-bootstrap-datetimepicker';
+import 'pc-bootstrap4-datetimepicker/build/css/bootstrap-datetimepicker.css';
+Vue.use(datePicker)
+Vue.component("datepicker", datePicker);
+jQuery.extend(true, jQuery.fn.datetimepicker.defaults, {
+  icons: {
+    time: 'fa fa-clock',
+    date: 'fa fa-calendar',
+    up: 'fa fa-arrow-up',
+    down: 'fas fa-arrow-down',
+    previous: 'fa fa-chevron-left',
+    next: 'fa fa-chevron-right',
+    today: 'fa fa-calendar-check',
+    clear: 'fa fa-trash-alt',
+    close: 'fa fa-times-circle'
+  }
+});
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

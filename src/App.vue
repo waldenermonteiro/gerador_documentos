@@ -224,4 +224,14 @@ body {
     width: 240px;
   }
 }
+#documentoVisualizacao .modal-lg {
+  min-width: 1200px !important;
+}
+#documentoVisualizacao .modal-body {
+  padding: 0px;
+}
+
+#documentoVisualizacao .modal-content {
+  min-height: 1000px !important;
+}
 </style>

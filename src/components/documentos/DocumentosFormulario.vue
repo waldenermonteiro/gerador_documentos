@@ -135,15 +135,12 @@ export default {
   directives: { mask },
   data() {
     return {
-      parceiro: {},
-      contrato: { chrEstado: "" },
-      endereco: {},
       show: true
     };
   },
   mounted() {
     this.$store.state.Documentos.validatorCadastro = this.$validator;
-  },
+  }
 };
 </script>
 <style>
