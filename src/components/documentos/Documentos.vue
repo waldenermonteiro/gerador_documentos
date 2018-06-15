@@ -39,7 +39,7 @@ export default {
       options: {
         format: "DD/MM/YYYY",
         useCurrent: false,
-        locale: 'pt'
+        locale: "pt"
       },
       sortDesc: null,
       emptyText: "Não foi possivel consultar os registros",
@@ -93,5 +93,11 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
+#content {
+  /* padding-top: 13%; */
+  padding-top: 8%;
+  padding-left: 10%;
+  padding-right: 10%;
+}
 </style>

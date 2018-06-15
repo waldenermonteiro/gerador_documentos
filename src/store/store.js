@@ -5,10 +5,12 @@ import actions from './actions'
 import mutations from './mutations'
 
 import Documentos from './modules/Documentos/store';
+import Contratos from './modules/Contratos/store';
 
 Vue.use(Vuex);
 const modules = {
-  Documentos
+  Documentos,
+  Contratos
 }
 export default new Vuex.Store({
   state,

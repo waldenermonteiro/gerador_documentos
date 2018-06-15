@@ -9,25 +9,21 @@ const Validations = {
       tela_impressao.document.write(
         "<link rel='stylesheet' type='text/css' href='/static/css/quill.bubble.css'>"
       );
-      tela_impressao.document.write(
-        "<link rel='stylesheet' type='text/css' href='/static/css/quill.core.css'>"
-      );
-      tela_impressao.document.write(
-        "<link rel='stylesheet' type='text/css' href='/static/css/quill.snow.css'>"
-      );
-
-      tela_impressao.document.write("</style >");
+      // if (process.env.NODE_ENV == 'development') {
+      //   tela_impressao.document.write(
+      //     "<link rel='stylesheet' type='text/css' href='/static/css/quill.bubble.css'>"
+      //   );
+      // } else {
+      //   tela_impressao.document.write(
+      //     "<link rel='stylesheet' type='text/css' href='/spaweb/static/css/quill.bubble.css'>"
+      //   );
+      // }
       tela_impressao.document.write("</head><body >");
       tela_impressao.document.write("<div class='ql-editor'>");
       tela_impressao.document.write(conteudo);
       tela_impressao.document.write("</div>");
+      tela_impressao.document.write('<script type="text/javascript" DEFER="DEFER">function pageCompleted(){window.document.close(); window.focus(); window.print(); window.close()}; pageCompleted();</script>')
       tela_impressao.document.write("</body></html>");
-      setTimeout(() => {
-        tela_impressao.document.close();
-        tela_impressao.focus();
-        tela_impressao.print();
-        tela_impressao.close();
-      }, 1000);
 
     },
       Vue.prototype.$toggleClass = (element, className) => {

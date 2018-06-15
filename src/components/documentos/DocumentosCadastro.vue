@@ -1,15 +1,15 @@
 <template>
   <container-panel>
-    <panel titulo="Formulário de documento" idpainel="documento-cadastro">
+    <panel titulo="Formulário de documento" icone="file" idpainel="documento-cadastro">
       <form-wizard :startIndex="tabInicio" :title="title" stepSize="xs" :subtitle="subtitle" :nextButtonText="nextButtonText" :backButtonText="backButtonText" :finishButtonText="finishButton" @on-complete="saveDocument()" color="#0e0e29">
-        <tab-content title="Escolha o tipo de documento" icon="fa fa-user" :before-change="validateFirstStep" style="margin-top:-20px">
+        <tab-content title="Escolha o tipo de documento" icon="fa fa-file-text" :before-change="validateFirstStep" style="margin-top:-20px">
           <documentos-modelo></documentos-modelo>
         </tab-content>
-        <tab-content title="Preencha o formulário" icon="fa-user" :before-change="validateSecondStep">
-          <documentos-formulario></documentos-formulario>
+        <tab-content title="Preencha o formulário" icon="fa fa-keyboard-o" :before-change="validateSecondStep">
+          <locacao-imovel-residencial></locacao-imovel-residencial>
         </tab-content>
         <tab-content title="Visualização do documento" icon="fa fa-check" :before-change="validateThirdStep">
-          <documentos-impressao></documentos-impressao>
+          <documentos-finalizacao></documentos-finalizacao>
         </tab-content>
         <button class="btn" style="background-color:grey;color:white" slot="prev">Voltar</button>
         <button class="btn btn-primary" slot="next">Avançar</button>
@@ -21,19 +21,20 @@
 
 <script>
 import { mask } from "vue-the-mask";
-import DocumentoFormulario from "./DocumentosFormulario.vue";
+import LocacaoImovelFormulario from "../contratos/LocacaoImovelResidencial.vue";
 import DocumentosModelo from "./DocumentosModelo.vue";
-import DocumentosImpressao from "./DocumentosImpressao.vue";
+import documentosFinalizacao from "./documentosFinalizacao.vue";
 import { barramento } from "../../main";
 import { mapState } from "vuex";
 export default {
   computed: {
-    ...mapState("Documentos", ["variables", "documento"])
+    ...mapState("Documentos", ["variables", "documento"]),
+    ...mapState("Contratos", ["locacaoImovelResidencialLocador","locacaoImovelResidencialLocadorTags"])
   },
   components: {
-    "documentos-formulario": DocumentoFormulario,
+    "locacao-imovel-residencial": LocacaoImovelFormulario,
     "documentos-modelo": DocumentosModelo,
-    "documentos-impressao": DocumentosImpressao
+    "documentos-finalizacao": documentosFinalizacao
   },
   directives: { mask },
   props: {
@@ -89,8 +90,8 @@ export default {
       this.$store.dispatch(
         "Documentos/alterDocumentoModelo",
         this.$replaceDocumento(
-          this.variables,
-          this.documento,
+          this.locacaoImovelResidencialLocadorTags,
+          this.locacaoImovelResidencialLocador,
           this.documento.modelo
         )
       );

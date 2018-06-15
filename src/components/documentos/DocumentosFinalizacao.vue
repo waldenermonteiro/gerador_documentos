@@ -1,6 +1,6 @@
 <template>
   <div class="scroll-paper">
-    <div id="content" class="content ql-editor" v-html="documento.modelo" style=""></div>
+    <div id="content" class="content ql-editor" v-html="documento.modelo" ></div>
   </div>
 </template>
 <script>
@@ -16,14 +16,14 @@ export default {
 </script>
 <style>
 .scroll-paper {
-  background-image: url("/static/Scrolled_Ancient_Paper_PNG_Image.png");
+  /* background-image: url("/static/Scrolled_Ancient_Paper_PNG_Image.png");
   background-repeat: no-repeat;
   background-size: 100%;
-  width: 100%;
+  width: 100%; */
+  height: auto;
+  background-color: #f7f5f5;
+  border: 1px solid black;
+  border-radius: 20px;
 }
-#content {
-  padding-top: 13%;
-  padding-left: 10%;
-  padding-right: 10%;
-}
+
 </style>
