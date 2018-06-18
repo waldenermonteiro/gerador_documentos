@@ -11,6 +11,10 @@ Validator.extend("cnpj", {
     getMessage: field => `Digite um CNPJ válido`,
     validate: value => Vue.prototype.validateCnpj(value) === true
 });
+Validator.extend("cpf", {
+    getMessage: field => `Digite um CPF válido`,
+    validate: value => Vue.prototype.validateCpf(value) === true
+});
 Validator.extend("phone", {
     getMessage: field => `Telefone precisa ter no mínimo 10 dígitos`,
     validate: value => Vue.prototype.validatePhone(value) === true

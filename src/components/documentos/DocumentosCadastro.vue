@@ -29,7 +29,10 @@ import { mapState } from "vuex";
 export default {
   computed: {
     ...mapState("Documentos", ["variables", "documento"]),
-    ...mapState("Contratos", ["locacaoImovelResidencialLocador","locacaoImovelResidencialLocadorTags"])
+    ...mapState("Contratos", [
+      "locacaoImovelResidencial",
+      "locacaoImovelResidencialTags"
+    ])
   },
   components: {
     "locacao-imovel-residencial": LocacaoImovelFormulario,
@@ -87,11 +90,12 @@ export default {
     },
     validateSecondStep() {
       this.$store.dispatch("Documentos/cloneDocumentoModelo");
+      console.log(this.locacaoImovelResidencial);
       this.$store.dispatch(
         "Documentos/alterDocumentoModelo",
         this.$replaceDocumento(
-          this.locacaoImovelResidencialLocadorTags,
-          this.locacaoImovelResidencialLocador,
+          this.locacaoImovelResidencialTags,
+          this.locacaoImovelResidencial,
           this.documento.modelo
         )
       );

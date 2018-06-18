@@ -1,31 +1,34 @@
 export default {
-    locacaoImovelResidencialLocador: {
+    locacaoImovelResidencial: {
         nomeLocador: "",
         nacionalidadeLocador: "",
         cpfLocador: "",
         rgLocador: "",
-        estadocivilLocador: "",
+        estadoCivilLocador: "",
+        profissaoLocador: "",
         enderecoLocador: "",
         complementoLocador: "",
         cepLocador: "",
         bairroLocador: "",
         cidadeLocador: "",
-        estadoLocador: ""
-    },
-    locacaoImovelResidencialLocadorTags: ["{!nomeLocador}", "{!nacionalidadeLocador}", "{!cpfLocador}", "{!rgLocador}", "{!estadocivilLocador}", "{!enderecoLocador}",
-        "{!complementoLocador}", "{!cepLocador}", "{!bairroLocador}", "{!cidadeLocador}", "{!estadoLocador}"],
-    locacaoImovelResidencialLocatario: {
-        nome: "",
-        nacionalidade: "",
-        cpf: "",
-        rg: "",
-        estadocivil: "",
-        endereco: "",
-        complemento: "",
-        cep: "",
-        bairro: "",
-        cidade: "",
-        estado: ""
+        estadoLocador: "",
+        telefoneLocador: "",
 
-    }
+        nomeLocatario: "",
+        nacionalidadeLocatario: "",
+        cpfLocatario: "",
+        rgLocatario: "",
+        estadoCivilLocatario: "",
+        profissaoLocatario: "",
+        enderecoLocatario: "",
+        complementoLocatario: "",
+        cepLocatario: "",
+        bairroLocatario: "",
+        cidadeLocatario: "",
+        estadoLocatario: "",
+        telefoneLocatario: ""
+    },
+    locacaoImovelResidencialTags: ["{!nomeLocador}", "{!nacionalidadeLocador}", "{!cpfLocador}", "{!rgLocador}", "{!estadoCivilLocador}", "{!profissaoLocador}", "{!enderecoLocador}",
+        "{!complementoLocador}", "{!cepLocador}", "{!bairroLocador}", "{!cidadeLocador}", "{!estadoLocador}", "{!telefoneLocador}", "{!nomeLocatario}", "{!nacionalidadeLocatario}", "{!cpfLocatario}", "{!rgLocatario}", "{!estadoCivilLocatario}", "{!profissaoLocatario}", "{!enderecoLocatario}",
+        "{!complementoLocatario}", "{!cepLocatario}", "{!bairroLocatario}", "{!cidadeLocatario}", "{!estadoLocatario}", "{!telefoneLocatario}"],
 }

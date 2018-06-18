@@ -64,25 +64,31 @@ const Validations = {
       },
       Vue.prototype.$replaceDocumento = (arrayOld, documento, modeloDocumento) => {
         let newArray = [];
-        for (let i in documento) {
-          if (documento.hasOwnProperty(i)) {
-            newArray.push(documento[i]);
-          }
+        let arrayTagsCopia = Object.assign([], arrayOld)
+
+        for (let i in arrayTagsCopia) {
+          arrayTagsCopia[i] = arrayTagsCopia[i].replace("{!", "")
+          arrayTagsCopia[i] = arrayTagsCopia[i].replace("}", "")
+          newArray.push(arrayTagsCopia[i])
         }
         let temp = document.createElement('div');
         temp.innerHTML = modeloDocumento;
         let contentHTML = temp;
         let elements = contentHTML.getElementsByTagName("*");
-        for (let i = 0; i < elements.length; i++) {
-          for (let j = 0; j < arrayOld.length; j++) {
-            let txt = elements[i].innerHTML.replace(
-              new RegExp(`${arrayOld[j]}`, "gi"),
-              `${newArray[j]}`
-            );
-            elements[i].innerHTML = txt;
+        for (let e = 0; e < elements.length; e++) {
+          for (let i = 0; i < arrayOld.length; i++) {
+            for (let j in documento) {
+              if (newArray[i] == j) {
+                let txt = contentHTML.innerHTML.replace(arrayOld[i], documento[j]);
+                contentHTML.innerHTML = txt;
+              }
+
+            }
           }
         }
+
         return contentHTML.innerHTML;
+
       }
   }
 }
